@@ -2,6 +2,7 @@ import React from 'react';
 import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
+import NewTaskForm from '../new-task-form';
 import './app.css';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <AppHeader/>
       <SearchPanel/>
       <TodoList todos={todoData} />
+      <NewTaskForm/>
     </div>
   );
 };

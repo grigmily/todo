@@ -19,12 +19,12 @@ const TodoListItem = ({ label, important=false, done=false}) => {
         <button
           type="button"
           className="btn btn-outline-success btn-sm">
-            <i className="fa fa-exclamation"/>
+            <i className="fa fa-exclamation"></i>
         </button>
         <button
           type="button"
           className="btn btn-outline-danger btn-sm">
-            <i className="fa fa-trash-o"/>
+          <i class="fa fa-trash-can"></i>
         </button>
     </span>
   )
