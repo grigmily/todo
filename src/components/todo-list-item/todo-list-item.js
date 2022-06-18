@@ -1,17 +1,19 @@
 import React from 'react';
 import './todo-list-item.css'
 
-const TodoListItem = ({ label, important = false }) => {
-  const style = {
-      color: important ? 'steelBlue' : 'black',
-      fontWeight: important ? 'bold' : 'normal'
+const TodoListItem = ({ label, important=false, done=false}) => {
+  let className = "todo-list-item";
+  if (important) {
+    className += ' important'
+  };
+  if (done) {
+    className += ' done'
   };
   return (
     <span
-      className="todo-list-item">
+      className={className}>
         <span
-          className="todo-list-item-label"
-          style={style}>
+          className="todo-list-item-label">
             { label }
         </span>
         <button

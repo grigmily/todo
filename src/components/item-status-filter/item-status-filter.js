@@ -12,3 +12,5 @@ const ItemStatusFilter = () => {
     </div>
   )
 }
+
+export default ItemStatusFilter;
