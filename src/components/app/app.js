@@ -8,13 +8,15 @@ import './app.css';
 const App = () => {
 
   const todoData = [
-    {label: "Drink Coffee", important: false, done: true, id: 1},
-    {label: "Make Awesome App", important: true, done: false, id: 2},
-    {label: "Have a lunch", important: false, done: false, id: 3}
+    {label: "Drink Coffee", important: false, done: true, editing: false, id: 1},
+    {label: "Make Awesome App", important: true, done: false, editing: false, id: 2},
+    {label: "Have a lunch", important: false, done: false, editing: false, id: 3}
   ];
+  const count = {toDo: 1, done: 2};
+  const {toDo, done} = count;
   return (
     <div className="app-position">
-      <AppHeader/>
+      <AppHeader toDo={toDo} done={done}/>
       <SearchPanel/>
       <TodoList todos={todoData} />
       <NewTaskForm/>

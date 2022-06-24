@@ -6,10 +6,20 @@ const TodoList = ({ todos }) => {
 
   const elements = todos.map((item) => {
 
-    const {id, ...itemProps} = item;
+    const {id, important, done, editing, ...itemProps} = item;
+    let className = "todo-list-item";
+    if (important) {
+      className += ' important'
+    };
+    if (done) {
+      className += ' done'
+    };
+    if (editing) {
+      className += ' editing'
+    };
 
     return (
-      <li key={id} className="list-group-item">
+      <li key={id} className={className}>
         <TodoListItem {...itemProps}/>
       </li>
     );

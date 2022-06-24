@@ -1,6 +1,4 @@
-.todo-list-item {
-  font-size: 1.25rem;
-}
+
 
 .todo-list-item button {
   width: 35px;
@@ -17,11 +15,22 @@
   user-select: none;
 }
 
-.todo-list-item.done .todo-list-item-label {
-  text-decoration: line-through;
-}
-
 .todo-list-item.important .todo-list-item-label {
   font-weight: bold;
   color: steelblue;
+}
+
+.todo-list-item.done .todo-list-item-label{
+  color: #cdcdcd;
+  text-decoration: line-through;
+}
+
+.todo-list-item.important.done .todo-list-item-label {
+  color: #cdcdcd;
+  text-decoration: line-through;
+  font-weight: bold;
+}
+
+.todo-list-item {
+  font-size: 1.25rem;
 }
