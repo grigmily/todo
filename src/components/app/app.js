@@ -3,9 +3,12 @@ import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
 import NewTaskForm from '../new-task-form';
+import ItemAddForm from '../item-add-form';
 import './app.css';
 
 export default class App extends Component {
+
+  minId = 100;
 
   state = {
     todoData: [
@@ -30,6 +33,27 @@ export default class App extends Component {
       }
     )
   };
+
+  addItem = (text) => {
+
+    const newItem = {
+      label: text,
+      important: false,
+      editing: false,
+      id: this.minId++
+    }
+
+    this.setState(({todoData}) => {
+      const newArr = [
+        ...todoData,
+        newItem
+      ];
+      return {
+        todoData: newArr
+      }
+    });
+
+  };
   render() {
     return (
       <div className="app-position">
@@ -39,6 +63,7 @@ export default class App extends Component {
           todos={this.state.todoData}
           onDeleted={(id) => this.deleteItem(id)}/>
         <NewTaskForm/>
+        <ItemAddForm onItemAdded={this.addItem}/>
       </div>
     );
   };
