@@ -1,27 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
 import NewTaskForm from '../new-task-form';
 import './app.css';
 
-const App = () => {
+export default class App extends Component {
 
-  const todoData = [
-    {label: "Drink Coffee", important: false, done: true, editing: false, id: 1},
-    {label: "Make Awesome App", important: true, done: false, editing: false, id: 2},
-    {label: "Have a lunch", important: false, done: false, editing: false, id: 3}
-  ];
-  const count = {toDo: 1, done: 2};
-  const {toDo, done} = count;
-  return (
-    <div className="app-position">
-      <AppHeader toDo={toDo} done={done}/>
-      <SearchPanel/>
-      <TodoList todos={todoData} />
-      <NewTaskForm/>
-    </div>
-  );
-};
+  state = {
+    todoData: [
+      {label: "Drink Coffee", important: false, done: true, editing: false, id: 1},
+      {label: "Make Awesome App", important: true, done: false, editing: false, id: 2},
+      {label: "Have a lunch", important: false, done: false, editing: false, id: 3}
+    ],
+    toDo: 1,
+    done: 2
+  };
 
-export default App;
+  deleteItem = (id) => {
+    this.setState(({todoData}) => {
+        const idx = todoData.findIndex((el) => el.id === id);
+        const newArray = [
+          ...todoData.slice(0,idx),
+          ...todoData.slice(idx + 1)
+          ];
+        return {
+          todoData: newArray
+        }
+      }
+    )
+  };
+  render() {
+    return (
+      <div className="app-position">
+        <AppHeader toDo={this.state.toDo} done={this.state.done}/>
+        <SearchPanel/>
+        <TodoList
+          todos={this.state.todoData}
+          onDeleted={(id) => this.deleteItem(id)}/>
+        <NewTaskForm/>
+      </div>
+    );
+  };
+}
