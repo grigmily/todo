@@ -100,7 +100,6 @@ export default class App extends Component {
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
           />
-        <NewTaskForm/>
         <ItemAddForm onItemAdded={this.addItem}/>
       </div>
     );
