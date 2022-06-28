@@ -16,7 +16,10 @@ export default class App extends Component {
       this.createTodoItem("Make Awesome App"),
       this.createTodoItem("Have a lunch")
     ],
+    type: 'All'
   };
+
+
 
   createTodoItem(label) {
     return {
@@ -85,20 +88,31 @@ export default class App extends Component {
     });
   };
 
+  filterList = (typeValue) => {
+    this.setState(({ type }) => {
+      return{
+        type: typeValue
+      };
+    });
+  }
+
   render() {
-    const { todoData } = this.state;
+    const { todoData, type } = this.state;
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
-
+    
     return (
       <div className="app-position">
         <AppHeader toDo={todoCount} done={doneCount}/>
-        <SearchPanel/>
+        <SearchPanel
+          onFiltered={this.filterList}
+          type={type}/>
         <TodoList
           todos={todoData}
           onDeleted={(id) => this.deleteItem(id)}
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
+          type={type}
           />
         <ItemAddForm onItemAdded={this.addItem}/>
       </div>

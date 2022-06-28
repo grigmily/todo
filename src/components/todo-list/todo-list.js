@@ -6,7 +6,8 @@ const TodoList = ({
   todos,
   onDeleted,
   onToggleImportant,
-  onToggleDone
+  onToggleDone,
+  type
   }) => {
 
   const elements = todos.map((item) => {
@@ -21,6 +22,7 @@ const TodoList = ({
           onDeleted = {() => onDeleted(id)}
           onToggleImportant = {() => onToggleImportant(id)}
           onToggleDone = {() => onToggleDone(id)}
+          type={type}
           />
       </li>
     );
