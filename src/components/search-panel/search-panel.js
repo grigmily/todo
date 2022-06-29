@@ -9,7 +9,7 @@ render(){
     onFiltered,
     type
   } = this.props;
-  //console.log('search-panel ', type);
+
   const searchText = 'Type here to search';
   return (
         <div className="search-input">

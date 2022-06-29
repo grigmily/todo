@@ -92,7 +92,7 @@ export default class App extends Component {
     this.setState(({ type }) => {
       return{
         type: typeValue
-      };
+     };
     });
   }
 
@@ -100,7 +100,7 @@ export default class App extends Component {
     const { todoData, type } = this.state;
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
-    
+
     return (
       <div className="app-position">
         <AppHeader toDo={todoCount} done={doneCount}/>

@@ -11,7 +11,6 @@ export default class TodoListItem extends Component {
         onToggleDone,
         done,
         important,
-        type
       } = this.props;
 
       let classNames = "todo-list-item";
@@ -22,7 +21,7 @@ export default class TodoListItem extends Component {
       if ( important ) {
         classNames += ' important';
       }
-      //console.log('todo-list-item ', type);
+
       return (
         <span className={classNames}>
             <span

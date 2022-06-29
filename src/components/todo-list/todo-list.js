@@ -10,7 +10,23 @@ const TodoList = ({
   type
   }) => {
 
-  const elements = todos.map((item) => {
+  let todosFiltered = [];
+  switch (type) {
+    case 'All':
+      todosFiltered = todos;
+      break;
+    case 'Active':
+      todosFiltered = todos.filter((el) => !el.done);
+      break;
+    case 'Done':
+      todosFiltered = todos.filter((el) => el.done);
+      break;
+    default:
+      todosFiltered = todos;
+
+  }
+
+  const elements = todosFiltered.map((item) => {
 
     const {id, ...itemProps} = item;
     let className = "todo-list-item";
@@ -22,7 +38,6 @@ const TodoList = ({
           onDeleted = {() => onDeleted(id)}
           onToggleImportant = {() => onToggleImportant(id)}
           onToggleDone = {() => onToggleDone(id)}
-          type={type}
           />
       </li>
     );
