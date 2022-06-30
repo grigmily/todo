@@ -5,11 +5,11 @@
       />
     <SearchPanel
       onFiltered={this.filterList}
-      type={type}
+      filterType={filterTypetype}
       />
       <ItemStatusFilter
-        onFiltered={(type) => onFiltered(type)}
-        type={type}
+        onFiltered={(filterType) => onFiltered(filterType)}
+        filterType={filterType}
         />
         {filterButtons}
     <TodoList
@@ -17,14 +17,14 @@
       onDeleted={(id) => this.deleteItem(id)}
       onToggleImportant={this.onToggleImportant}
       onToggleDone={this.onToggleDone}
-      type={type}
+      filterType={filterType}
       />
       <TodoListItem
         {...itemProps}
         onDeleted = {() => onDeleted(id)}
         onToggleImportant = {() => onToggleImportant(id)}
         onToggleDone = {() => onToggleDone(id)}
-        type={type}
+        filterType={filterType}
         />
     <ItemAddForm onItemAdded={this.addItem}
       />

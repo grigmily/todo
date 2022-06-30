@@ -16,14 +16,15 @@ export default class App extends Component {
       this.createTodoItem("Make Awesome App"),
       this.createTodoItem("Have a lunch")
     ],
-    type: 'All'
+    filterType: 'All',
+    search: ''
   };
 
 
 
   createTodoItem(label) {
     return {
-      label,
+      label: label,
       important: false,
       done: false,
       id: this.minId++
@@ -89,15 +90,23 @@ export default class App extends Component {
   };
 
   filterList = (typeValue) => {
-    this.setState(({ type }) => {
-      return{
-        type: typeValue
+    this.setState(({ filterType }) => {
+      return {
+        filterType: typeValue
      };
     });
-  }
+  };
+
+handleChange = (searchValue) => {
+    this.setState(({ search }) => {
+      return {
+        search: searchValue
+      };
+    });
+  };
 
   render() {
-    const { todoData, type } = this.state;
+    const { todoData, filterType } = this.state;
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
 
@@ -106,13 +115,16 @@ export default class App extends Component {
         <AppHeader toDo={todoCount} done={doneCount}/>
         <SearchPanel
           onFiltered={this.filterList}
-          type={type}/>
+          filterType={filterType}
+          searchValue={this.state.search}
+          onChange={this.handleChange}/>
         <TodoList
           todos={todoData}
           onDeleted={(id) => this.deleteItem(id)}
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
-          type={type}
+          filterType={filterType}
+          searchValue={this.state.search}
           />
         <ItemAddForm onItemAdded={this.addItem}/>
       </div>

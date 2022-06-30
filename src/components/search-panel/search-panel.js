@@ -7,17 +7,21 @@ export default class SearchPanel extends Component {
 render(){
   const   {
     onFiltered,
-    type
+    filterType,
+    searchValue,
+    onChange
   } = this.props;
 
   const searchText = 'Type here to search';
   return (
         <div className="search-input">
           <input
-            placeholder={searchText}/>
+            value={searchValue}
+            placeholder={searchText}
+            onChange={(e) => onChange(e.target.value)}/>
           <ItemStatusFilter
-            onFiltered={(type) => onFiltered(type)}
-            type={type}/>
+            onFiltered={(filterType) => onFiltered(filterType)}
+            filterType={filterType}/>
         </div>
     )
   };

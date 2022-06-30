@@ -7,13 +7,13 @@ const TodoList = ({
   onDeleted,
   onToggleImportant,
   onToggleDone,
-  type
+  filterType,
+  searchValue
   }) => {
-
   let todosFiltered = [];
-  switch (type) {
+  switch (filterType) {
     case 'All':
-      todosFiltered = todos;
+      todosFiltered = todos.filter((el) => el.label.toLowerCase().includes(searchValue.toLowerCase()));
       break;
     case 'Active':
       todosFiltered = todos.filter((el) => !el.done);
@@ -22,8 +22,7 @@ const TodoList = ({
       todosFiltered = todos.filter((el) => el.done);
       break;
     default:
-      todosFiltered = todos;
-
+      todosFiltered = todos.filter((el) => el.label.includes(searchValue));
   }
 
   const elements = todosFiltered.map((item) => {

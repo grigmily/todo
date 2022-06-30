@@ -5,9 +5,9 @@ export default class ItemStatusFilter extends Component {
   render(){
     const   {
       onFiltered,
-      type
+      filterType
     } = this.props;
-  //  console.log('item-status-filter ', type);
+
   var filters = [{label:'All', status: true},
                 {label:'Active', status: false},
                 {label:'Done', status: false}];
@@ -15,7 +15,7 @@ export default class ItemStatusFilter extends Component {
 
       filters = filters.map((el) => {
         let label = el.label;
-        let status = el.label === type ? true : false;
+        let status = el.label === filterType ? true : false;
         return {label: label, status: status}
       })
 
