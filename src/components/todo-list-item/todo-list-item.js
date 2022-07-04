@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { formatDistanceToNow  } from 'date-fns';
 import './todo-list-item.css'
 
 export default class TodoListItem extends Component {
@@ -11,8 +12,9 @@ export default class TodoListItem extends Component {
         onToggleDone,
         done,
         important,
+        dateCreatedAt
       } = this.props;
-
+      let createdAtString = formatDistanceToNow(dateCreatedAt, { addSuffix: true, includeSeconds: true });
       let classNames = "todo-list-item";
       if (done) {
         classNames += ' done';
@@ -33,7 +35,7 @@ export default class TodoListItem extends Component {
               className="nonlabel-container">
             <div
               className="todo-list-item-created">
-              created N seconds / minutes ago
+              created {createdAtString}
             </div>
             <div
               className="buttons-container">

@@ -27,7 +27,8 @@ export default class App extends Component {
       label: label,
       important: false,
       done: false,
-      id: this.minId++
+      id: this.minId++,
+      dateCreatedAt: new Date()
     }
   };
 
