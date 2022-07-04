@@ -23,12 +23,20 @@ export default class TodoListItem extends Component {
       }
 
       return (
-        <span className={classNames}>
-            <span
+        <div className={classNames}>
+            <div
               className="todo-list-item-label"
               onClick={onToggleDone}>
                 { label }
-            </span>
+            </div>
+            <div
+              className="nonlabel-container">
+            <div
+              className="todo-list-item-created">
+              created N seconds / minutes ago
+            </div>
+            <div
+              className="buttons-container">
             <button
               type="button"
               className="btn btn-outline-success btn-sm"
@@ -41,7 +49,9 @@ export default class TodoListItem extends Component {
               onClick={this.props.onDeleted}>
               <i className="fa fa-trash-can"></i>
             </button>
-        </span>
+            </div>
+            </div>
+        </div>
       )
   }
 }
