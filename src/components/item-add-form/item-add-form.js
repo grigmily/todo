@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import './item-add-form.css';
+import PropTypes from 'prop-types';
 
 export default class ItemAddForm extends Component {
+
+  static defaultProps = {
+    onItemAdded: ()=>{}
+  };
+
+  static propTypes = {
+    onItemAdded: PropTypes.func
+  };
 
   state = {
     label: ''

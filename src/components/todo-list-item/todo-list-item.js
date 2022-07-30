@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import { formatDistanceToNow  } from 'date-fns';
-import './todo-list-item.css'
+import './todo-list-item.css';
+import PropTypes from 'prop-types';
 
 export default class TodoListItem extends Component {
+
+  static defaultProps = {
+    done: false,
+    important: false,
+    dateCreatedAt:  new Date()
+  };
+
+  static propTypes = {
+    done: PropTypes.bool,
+    important: PropTypes.bool,
+    dateCreatedAt:  PropTypes.instanceOf(Date)
+  }
 
   render(){
       const   {
