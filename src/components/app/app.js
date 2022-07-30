@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
-import NewTaskForm from '../new-task-form';
 import ItemAddForm from '../item-add-form';
 import './app.css';
 

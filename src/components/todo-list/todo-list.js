@@ -1,6 +1,9 @@
 import React from 'react';
 import TodoListItem from '../todo-list-item';
 import './todo-list.css';
+import PropTypes from 'prop-types';
+
+let minId = 100;
 
 const TodoList = ({
   todos,
@@ -47,6 +50,32 @@ const TodoList = ({
       {elements}
     </ul>
   );
+};
+
+TodoList.defaultProps = {
+  todos: [
+    {
+      label: "No Tasks",
+      important: false,
+      done: false,
+      id: minId++,
+      dateCreatedAt: new Date()
+    }
+  ],
+  onDeleted: ()=>{},
+  onToggleImportant: ()=>{},
+  onToggleDone: ()=>{},
+  filterType: 'All',
+  searchValue: ''
+};
+
+TodoList.propTypes = {
+  todos: PropTypes.array,
+  onDeleted: PropTypes.func,
+  onToggleImportant: PropTypes.func,
+  onToggleDone: PropTypes.func,
+  filterType: PropTypes.oneOf(['All','Done','Active']),
+  searchValue: PropTypes.string
 };
 
 export default TodoList;

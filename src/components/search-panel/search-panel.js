@@ -1,8 +1,24 @@
 import React, {Component} from 'react';
 import ItemStatusFilter from '../item-status-filter'
+import PropTypes from 'prop-types';
 import './search-panel.css';
 
 export default class SearchPanel extends Component {
+
+static defaultProps = {
+  onFiltered: ()=>{},
+  filterType: 'All',
+  searchValue: '',
+  onChange: ()=>{},
+};
+
+static propTypes = {
+  onFiltered: PropTypes.func,
+  filterType: PropTypes.oneOf(['All','Done','Active']),
+  searchValue: PropTypes.string,
+  onChange: PropTypes.func
+};
+
 
 render(){
   const   {
