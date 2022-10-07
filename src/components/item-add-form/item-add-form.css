@@ -1,7 +1,13 @@
-.item-add-form {
-  margin-top: 10px;
+.item-add-form
+{
+    margin-top: 10px;
 }
 
-.item-add-form  input {
-  margin-right: 3px;
+.item-add-form  input
+{
+    margin-right: 3px;
+}
+.btn#submit
+{
+    width: 36em;
 }

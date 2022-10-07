@@ -1,0 +1,63 @@
+.icon
+{
+    font-size: 34px;
+
+    width: 30px;
+    height: 40px;
+    margin: auto 0;
+
+    cursor: pointer;
+    transition: color .2s ease-out;
+
+    color: #cc9a9a;
+}
+
+.icon:hover
+{
+    color: #af5b5e;
+}
+
+.icon-pause,
+/* .icon-play
+{
+    font-size: 18px;
+
+    width: 18px;
+    height: 18px;
+}*/
+
+.icon-play
+{
+    font-size: 15px;
+}
+.icon-pause:after
+{
+    /* content: '⏸'; */
+}
+
+.icon-play:after
+{
+    /* content: '▶'; */
+}
+
+.icon-reset:after
+{
+    font-size: .5em;
+
+    content: '↺';
+}
+
+.icon-stop:after
+{
+    font-size: .75em;
+
+    content: '⏹';
+}
+.timer
+{
+    font-size: 13px;
+
+    color: gray;
+
+    padding-inline-end: 1em;
+}

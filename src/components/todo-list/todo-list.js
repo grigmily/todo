@@ -1,7 +1,7 @@
-import React from 'react';
-import TodoListItem from '../todo-list-item';
-import './todo-list.css';
-import PropTypes from 'prop-types';
+import React from "react";
+import TodoListItem from "../todo-list-item";
+import "./todo-list.css";
+import PropTypes from "prop-types";
 
 let minId = 100;
 
@@ -12,44 +12,42 @@ const TodoList = ({
   onToggleDone,
   filterType,
   searchValue
-  }) => {
+}) => {
   let todosFiltered = [];
   switch (filterType) {
-    case 'All':
-      todosFiltered = todos.filter((el) => el.label.toLowerCase().includes(searchValue.toLowerCase()));
+    case "All":
+      todosFiltered = todos.filter(el =>
+        el.label.toLowerCase().includes(searchValue.toLowerCase())
+      );
       break;
-    case 'Active':
-      todosFiltered = todos.filter((el) => !el.done);
+    case "Active":
+      todosFiltered = todos.filter(el => !el.done);
       break;
-    case 'Done':
-      todosFiltered = todos.filter((el) => el.done);
+    case "Done":
+      todosFiltered = todos.filter(el => el.done);
       break;
     default:
-      todosFiltered = todos.filter((el) => el.label.includes(searchValue));
+      todosFiltered = todos.filter(el => el.label.includes(searchValue));
   }
 
-  const elements = todosFiltered.map((item) => {
-
+  const elements = todosFiltered.map(item => {
     const {id, ...itemProps} = item;
-    let className = "todo-list-item";
+    let timerId = "timer" + id;
 
     return (
-      <li key={id} className={className}>
+      <li key={id} className="todo-list-item">
         <TodoListItem
           {...itemProps}
-          onDeleted = {() => onDeleted(id)}
-          onToggleImportant = {() => onToggleImportant(id)}
-          onToggleDone = {() => onToggleDone(id)}
-          />
+          timerId={timerId}
+          onDeleted={() => onDeleted(id)}
+          onToggleImportant={() => onToggleImportant(id)}
+          onToggleDone={() => onToggleDone(id)}
+        />
       </li>
     );
   });
 
-  return(
-    <ul className="list-group todo-list">
-      {elements}
-    </ul>
-  );
+  return <ul className="list-group todo-list">{elements}</ul>;
 };
 
 TodoList.defaultProps = {
@@ -62,11 +60,11 @@ TodoList.defaultProps = {
       dateCreatedAt: new Date()
     }
   ],
-  onDeleted: ()=>{},
-  onToggleImportant: ()=>{},
-  onToggleDone: ()=>{},
-  filterType: 'All',
-  searchValue: ''
+  onDeleted: () => {},
+  onToggleImportant: () => {},
+  onToggleDone: () => {},
+  filterType: "All",
+  searchValue: ""
 };
 
 TodoList.propTypes = {
@@ -74,7 +72,7 @@ TodoList.propTypes = {
   onDeleted: PropTypes.func,
   onToggleImportant: PropTypes.func,
   onToggleDone: PropTypes.func,
-  filterType: PropTypes.oneOf(['All','Done','Active']),
+  filterType: PropTypes.oneOf(["All", "Done", "Active"]),
   searchValue: PropTypes.string
 };
 
