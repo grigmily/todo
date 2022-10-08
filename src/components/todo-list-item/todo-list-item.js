@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, {Component} from "react";
 import {formatDistanceToNow} from "date-fns";
 import Timer from "./timer";
 import "./todo-list-item.css";
+=======
+import React, { Component } from 'react';
+import { formatDistanceToNow  } from 'date-fns';
+import './todo-list-item.css';
+import PropTypes from 'prop-types';
+>>>>>>> 01bec99e73362ea00924da1ba81d669f651ee075
 
 export default class TodoListItem extends Component {
   render() {
@@ -24,9 +31,39 @@ export default class TodoListItem extends Component {
       classNames += " done";
     }
 
+<<<<<<< HEAD
     if (important) {
       classNames += " important";
     }
+=======
+  static defaultProps = {
+    done: false,
+    important: false,
+    dateCreatedAt:  new Date()
+  };
+
+  static propTypes = {
+    done: PropTypes.bool,
+    important: PropTypes.bool,
+    dateCreatedAt:  PropTypes.instanceOf(Date)
+  }
+
+  render(){
+      const   {
+        label,
+        onDeleted,
+        onToggleImportant,
+        onToggleDone,
+        done,
+        important,
+        dateCreatedAt
+      } = this.props;
+      let createdAtString = formatDistanceToNow(dateCreatedAt, { addSuffix: true, includeSeconds: true });
+      let classNames = "todo-list-item";
+      if (done) {
+        classNames += ' done';
+      };
+>>>>>>> 01bec99e73362ea00924da1ba81d669f651ee075
 
     return (
       <div className={classNames}>

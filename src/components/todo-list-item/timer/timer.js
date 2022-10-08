@@ -18,7 +18,6 @@ export default function Timer() {
 
   const doTime = useCallback(
     startTime => {
-      console.log("usedCallBack!");
       const timeCounter = Date.now() - startTime + saved;
       const seconds = Math.floor((timeCounter / SECOND) % 60);
       if (seconds.toString().length === 1) {
@@ -47,7 +46,6 @@ export default function Timer() {
 
   function togglePlay() {
     setPlay(!play);
-    console.log(play);
     if (!play) setStart();
     else setSaved(Date.now() - startTime);
   }
@@ -68,7 +66,6 @@ export default function Timer() {
   }
 
   useEffect(() => {
-    console.log("usedEffect!");
     if (play) {
       var intervalId = setInterval(() => doTime(startTime), 1000);
     } else clearInterval(intervalId);

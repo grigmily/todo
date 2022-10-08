@@ -1,7 +1,24 @@
+<<<<<<< HEAD
 import React, {Component} from "react";
 import "./item-add-form.css";
 
 export default class ItemAddForm extends Component {
+=======
+import React, { Component } from 'react';
+import './item-add-form.css';
+import PropTypes from 'prop-types';
+
+export default class ItemAddForm extends Component {
+
+  static defaultProps = {
+    onItemAdded: ()=>{}
+  };
+
+  static propTypes = {
+    onItemAdded: PropTypes.func
+  };
+
+>>>>>>> 01bec99e73362ea00924da1ba81d669f651ee075
   state = {
     label: ""
   };
