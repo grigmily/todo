@@ -1,39 +1,31 @@
-<<<<<<< HEAD
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./item-add-form.css";
+import PropTypes from "prop-types";
 
 export default class ItemAddForm extends Component {
-=======
-import React, { Component } from 'react';
-import './item-add-form.css';
-import PropTypes from 'prop-types';
-
-export default class ItemAddForm extends Component {
-
   static defaultProps = {
-    onItemAdded: ()=>{}
+    onItemAdded: () => {},
   };
 
   static propTypes = {
-    onItemAdded: PropTypes.func
+    onItemAdded: PropTypes.func,
   };
 
->>>>>>> 01bec99e73362ea00924da1ba81d669f651ee075
   state = {
-    label: ""
+    label: "",
   };
 
-  onLabelChange = e => {
+  onLabelChange = (e) => {
     this.setState({
-      label: e.target.value
+      label: e.target.value,
     });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     this.props.onItemAdded(this.state.label);
     this.setState({
-      label: ""
+      label: "",
     });
   };
 
